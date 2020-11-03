@@ -1,40 +1,22 @@
 {% extends "base_generic.html" %}
 
 {% block content %}
+    <h1>Comic List: </h1>
 
-<style>
-    body {
-      font-family: Arial;
-    }
+    {% if comic_list %}
 
-    input {
-      float: left;
-      width: 200px;
-      margin-bottom: 10px;
-    }
+      <ul>
+        {% for comic in comic_list %}
+          <li>
+            <a href="{{ comic.get_absolute_url }}"> 
+              {{ comic.nombre}} 
+            </a> ({{ comic.comics.name }})
+          </li>
+        {% endfor %}
+      </ul>
 
-    label {
-      clear: both;
-      float: left;
-      width: 180px;
-    }
+      {% else %}
+      <p>No hay comic disponibles en la estanteria </p>
 
-    button {
-      clear: both;
-      float: left;
-      width: 50px;
-    }
-
-    .error-control {
-      border: 1px solid red;
-    }
-
-    label.error {
-      color: red;
-      width: 300px;
-      font-size: 0.8em;
-      margin-top: -5px;
-      margin-bottom: 10px;
-    }
-
-  </style>
+    {% endif %}
+{% endblock %}
