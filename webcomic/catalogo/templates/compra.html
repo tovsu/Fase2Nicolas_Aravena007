@@ -1,0 +1,115 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        {% block title %}<title>Rainbow Comics</title>{% endblock %}
+        <meta charset = "utf-8">
+        <meta name    = "viewport" content="width=device-width, initial-scale=1">
+
+        {% load static %}
+        <link   rel   =  "stylesheet" href="{% static 'css/styles.css' %}">
+        <link   href  =  "css/menubootstrap.min.css" type="text/css" real="stylesheet">
+        <link   rel   = "stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        <script src   = "https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+        <script src   = "https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    
+        <script>
+            $(function() 
+            {
+              $("#mi-formulario").validate(
+                  {
+                   rules: 
+                   {
+                        nombre_comic:"requiered",
+                        cod_comic:"requiered",      
+                        precio: "requiered",
+                        editorial:"requiered",
+                        autor:"requiered",
+                        cantidad:"requiered",
+                        ingreso_fecha:"requiered"
+                    }, 
+
+                  messages: {
+
+                    nombre_comic: 
+                      {
+                          required: 'Ingresa el nombre del comic',
+                          minlength: 'ingrese nombre de comic valido'
+                      },
+
+                      cod_comic:
+                      {
+                          required: 'Ingrese codigo de comic',
+                          minlength: 'Cantidad de digitos insuficiente'
+                      },
+
+                      precio:
+                      {
+                          required: 'Ingrese precio de comic',
+                          minlength: 'Cantidad de digitos insuficiente'
+                      },
+                      editorial:
+                      {
+                          required: 'Ingrese nombre de editorial',
+                          minlength: 'Cantidad de digitos insuficiente'
+                      },
+                      autor:
+                      {
+                          required: 'Ingrese el nombre del autor valido',
+                          minlength: 'Cantidad de digitos insuficiente'
+                      },
+                      cantidad:
+                      {
+                          required: 'Ingrese la cantidad de comic',
+                          minlength: 'Cantidad de digitos insuficiente'
+                      },
+                      ingreso_fecha:
+                      {
+                          required: 'Ingrese fecha de compra',
+                          minlength: 'Cantidad de digitos insuficiente'
+                      }
+                  }
+              }); 
+          }); 
+      
+        </script>
+    </head>
+
+<body>
+    <form id="mi-formulario" action="comprar.html"> 
+
+        <label>Compra de comic Rainbow: </label>
+
+            <label>nombre del comic: </label>
+            <input type="text" name="nombre_comic" minlength="4" required>
+
+            <label>codigo del comic : </label>
+            <input type="text" name="cod_comic" minlength="7" required>
+
+            <label>precio: </label>
+            <input type="text" name="precio" minlength="4" required>
+
+            <label>editorial: </label>
+            <input type="text" name="editorial" minlength="3" required>
+
+            <label>autor: </label>
+            <input type="text" name="autor" minlength="4" required>
+
+            <label>cantidad : </label>
+            <input type="text" name="cantidad" minlength="2" required>
+
+            <label>ingreso fecha: </label>
+            <input type="text" name="ingreso_fecha" minlength="4" required>
+
+         
+       
+        <button>Comprar</button>
+
+</body>
+
+
+</html>
