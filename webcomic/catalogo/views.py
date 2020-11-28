@@ -1,14 +1,21 @@
 from django.shortcuts import render
-from . models import Comic
-from django.views import generic 
+from . models import comic
+from django.views import generic
+
+# from . models import nombre_comic, codigo_comic, precio, editorial, autor, cantidad, ingreso_fecha
+
+
+from django.views.generic.edit import CreateView, UpdateView, DeleteView
+from django.urls import reverse_lazy
 
 
 def index(request):
-     
+    num_comic = comic.objects.all().count()  
+
     return render(
         request,
         'index.html',
-        
+        context={'num_comic': num_comic},   
     )
 
 def estante(request):
@@ -25,55 +32,35 @@ def compra(request):
         'compra.html',
     )
 
+def vendidos(request):
 
-class ComicCreate(CreateView):
-    model  = Comic
+    return render (
+        request,
+        'vendidos.html',
+    )
+
+class comicCreate(CreateView):
+    model  = comic
     fields = '__all__'
-    initil ={'' : '25/12/2020'}
 
-class ComicUpdate(UpdateView):
-    model = Comic
-    field = ['nombre_comic',
-            'cod_comic',
-            'precio',
-            'editorial',
-            'autor',
-            'cantidad',
-            'ingreso_fecha']
-
-class ComicDelete(DelateView):
-    model = Comic
-    sucess_url = reverse_lazy('index')
-
-class GenreDetailView(generic.DetailView):
-    model = Comic
-
-class GenreListView(generic.ListView):
+class comicUpdate(UpdateView):
     model = comic
-    template_name = 'templates/catalogo/comic_list.html'
-    queryset = comic.objects.all()
+    field = ['nombre_comic',
+             'codigo_comic',
+             'precio',
+             'editorial',
+             'autor',
+             'cantidad',
+             'ingreso_fecha']
 
+class comicDelete(DeleteView):
+    model = comic
+    sucess_url = reverse_lazy('index')
+  
+class comicDetailView(generic.DetailView):
+    model = comic
+    
+class comicListView(generic.ListView):
+    model = comic
     paginate_by = 10
-
-def genre_new(request):
-    if request.method == "POST":
-        form = GenreForm(request.POST)
-        if form.is_valid():
-            post = form.save(commit=False)
-            post.save()
-            return redirect('genre-detail', pk=post.pk)
-    else:
-        form = GenreForm()
-        return render(request, 'peliculas/comic_form.html', {'form': form})
-
-def comic_new(request):
-    if request.method == "POST":
-        form = ComicForm(request.POST)
-        if form.is_valid():
-            post = form.save(commit=False)
-            post.save()
-            return redirect('comic-detail', pk=post.pk)
-    else:
-        form = ComicForm()
-        return render(request, 'catalogo/comic_form.html', {'form': form})
 

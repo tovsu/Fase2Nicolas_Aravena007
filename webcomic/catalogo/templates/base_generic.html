@@ -4,11 +4,8 @@
   
   {% block title %}<title>Rainbow Comics</title>{% endblock %}
   <meta charset = "utf-8">
-  <meta name    = "viewport" content="width=device-width, initial-scale=1">
-  
-  
- 
   {% load static %}
+  <meta name    = "viewport" content="width=device-width, initial-scale=1">
   <link   rel   =  "stylesheet" href="{% static 'css/styles.css' %}">
   <link   href  =  "css/menubootstrap.min.css" type="text/css" real="stylesheet">
   <link   rel   = "stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
@@ -85,11 +82,14 @@
             <li class="nav-item">
                 <a class="nav-link" href="{%url 'compra.html'%}">Comprar</a>
             </li> 
-  
+
+    <!--OPCION 4-->    
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'logout' %}">Cerrar Sesión</a>
+            </li>
         </ul>
     </div>
 </nav>
-
   {% block content %}
     
   {% endblock %}

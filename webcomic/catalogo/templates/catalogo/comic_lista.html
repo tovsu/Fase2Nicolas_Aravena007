@@ -53,15 +53,22 @@
 
     </style>
   </head>
-  <body>
-    <h1>formulario a Completar: </h1>
-    <form action ="" method="post">
-        {%csrf_token%}
-        <table>
-            {{form.as_table}}
-        </table>
-        <input type="submit" value ="Enviar, formulario">
-    </form>
-  </body>
 
-</html>
+  <body>
+    <h1>Lista de Comics</h1>
+    {% if comic_lista %}
+    <ul>
+      {% for comic in comic_lista %}
+      <li>
+        <a href="{{ comic.get_absolute_url }}">
+          {{ comic.codigo_comic }}</a> 
+            {{ comic.ingreso_fecha}} 
+             ({{comic.cantidad}})
+      </li>
+      {% endfor %}
+    </ul>
+    {% else %}
+      <p>No se encontro Comics</p>s
+    {% endif %} 
+  </body>
+</html>  

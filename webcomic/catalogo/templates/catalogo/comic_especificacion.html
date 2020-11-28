@@ -54,14 +54,14 @@
     </style>
   </head>
   <body>
-    <h1>formulario a Completar: </h1>
-    <form action ="" method="post">
-        {%csrf_token%}
-        <table>
-            {{form.as_table}}
-        </table>
-        <input type="submit" value ="Enviar, formulario">
-    </form>
-  </body>
+    
+  <h1>Comic: {{ Comic.codigo_comic }}</h1>
 
+  <p><strong>nombre_comic:</strong> {{ comic.nombre_comic }}</p> 
+  <p><strong>precio:</strong> {{ comic.precio }}</p> 
+  <p><strong>editorial</strong> {{ comic.editorial }}</p>  
+  <p><strong>autor:</strong> {{ comic.autor }}</p> 
+  <p><strong>cantidad:</strong> { comic.cantidad }}</p> 
+  <p><strong>ingreso_fecha:</strong> {{ comic.fecha_catalogo }}</p> 
+  </body>
 </html>

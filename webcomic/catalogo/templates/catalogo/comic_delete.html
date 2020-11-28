@@ -54,14 +54,14 @@
     </style>
   </head>
   <body>
-    <h1>formulario a Completar: </h1>
-    <form action ="" method="post">
-        {%csrf_token%}
-        <table>
-            {{form.as_table}}
-        </table>
-        <input type="submit" value ="Enviar, formulario">
+    <h1> Eliminar Comic </h1>
+    <p>Eliminar Comic Definitivamente: {{Comic}} ?</p>
+    <form action="" method="POST">
+        {% csrf_token %}
+        <input type="submit" action="" value="Yes, Eliminar"/>
     </form>
-  </body>
+</body>
+
+
 
 </html>
